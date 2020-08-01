@@ -1,0 +1,32 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #b2bec3;
+}
+
+.tarjeta {
+	width: 12%;
+	height: 260px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #0984e3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px #666666 solid;
+	border-radius: 10px;
+	backface-visibility: hidden;
+}
+
+.tarjeta:hover {
+	transform: scale(1.02, 1.02);
+	cursor: pointer;
+}
+
+.texto-tarjeta {
+	font-size: 21px;
+	text-align: center;
+}
