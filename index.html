@@ -7,29 +7,16 @@
 	<title>Tarjetas</title>
 </head>
 <body>
-	<div id="container">
-		<div class="tarjeta">
-			<div class="contenido-tarjeta">
-				<div class="front">
-					1
-				</div>
-				<div class="back">
-					Contenido de la tarjeta 1
-				</div>
+	<div class="container">
+		<div id="panel">
+			<div id="frases"></div>
+			<div id="formulario">
+				<input type="text" placeholder="Nueva frase..." id="txtfrase">
+				<input type="button" value="Agregar" id="btnagregar">
 			</div>
 		</div>
-		<!--FIN DE TARJETA-->
-		<div class="tarjeta">
-			<div class="contenido-tarjeta">
-				<div class="front">
-					2
-				</div>
-				<div class="back">
-					Contenido de la tarjeta 2
-				</div>
-			</div>
-		</div>
-		<!--FIN DE TARJETA-->
+
+		<a href="cards.html"><input type="button" id="btniniciar" value="Iniciar"></a>
 	</div>
 	<script src="index.js"></script>
 </body>
