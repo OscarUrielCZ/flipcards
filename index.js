@@ -1,7 +1,9 @@
 window.onload = function() {
-    const flipcard = document.querySelector('.tarjeta');    
+	const flipcards = document.getElementsByClassName('tarjeta');    
 
-    flipcard.addEventListener('click', function() {
-        flipcard.classList.toggle('flip');
-    });
+	for(let i=0; i<flipcards.length; i++) {
+		flipcards[i].addEventListener('click', function() {
+			flipcards[i].classList.toggle('flip');
+		});
+	}
 };
