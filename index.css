@@ -54,43 +54,85 @@ body {
 }
 
 .back {
+	text-align: center;
 	background-color: #00b894;
 	color: black;
 	transform: rotateY(180deg);
 }
 
-.texto-tarjeta {
-	font-size: 21px;
-	text-align: center;
-}
-
 #panel {
-	width: 50%;
+	width: 70%;
 	margin: 0 2rem;
 }
 
 #frases {
 	height: 60vh;
-	width: 100%;
 	margin-bottom: 10px;
-	padding: 10px;
-	background-color: white;
+	border: 1px solid #ccc;
+	overflow-y: auto;
 }
 
 .frase {
-	width: 100%;
+	padding: 5px 10px;
+}
+
+.texto {
+	display: inline-block;
+	max-width: 80%;
+	background-color: lightgreen;
+}
+
+.acciones {
+	/* display: inline-block; no es necesario*/
+	float: right;
+	background-color: lightcoral;
+}
+
+.acciones span {
+	margin-right: 10px;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#formulario {
+	margin-bottom: 10px;
 }
 
 #formulario input[type="text"] {
 	width: 75%;
+	height: 30px;
 }
 
 #formulario input[type="button"] {
 	width: 20%;
+	height: 30px;
+	float: right;
 }
 
 #btniniciar {
-	height: 5rem;
+	width: 100%;
+	height: 30px;
 	padding: 0 5px;
 	/* background-color: #00b894; */
+}
+
+.empty {
+	width: 50vw;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	border-radius: 1rem;
+	background-color: #2d3436;
+	color: white;
+}
+
+.empty a {
+	margin-top: 1rem;
+}
+
+.empty a button {
+	padding: 5px;
 }
