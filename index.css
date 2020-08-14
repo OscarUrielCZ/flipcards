@@ -10,6 +10,7 @@ body {
 .container {
 	height: 100vh;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 }
@@ -89,7 +90,7 @@ body {
 }
 
 .acciones span {
-	margin-right: 10px;
+	margin: 0 5px;
 	cursor: pointer;
 	text-decoration: underline;
 }

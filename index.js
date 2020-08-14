@@ -22,14 +22,20 @@ window.onload = function() {
 			acciones.className = 'acciones';
 			texto.innerHTML = frase;
 			borrar.innerHTML = 'borrar';
-			editar.innerHTML = 'editar';
 			contenedor.style.background = colores[index%2];
 
 			acciones.appendChild(borrar);
-			acciones.appendChild(editar);
 			contenedor.appendChild(texto);
 			contenedor.appendChild(acciones);
 			frases.appendChild(contenedor);
+
+			borrar.addEventListener('click', function() {
+				if(confirm('¿Seguro que quieres borrarla?')) {
+					data.splice(index, 1);
+					localStorage.setItem(localstoragename, JSON.stringify(data));
+					location.reload();
+				}
+			});
 		});
 	} else {
 		data = [];
