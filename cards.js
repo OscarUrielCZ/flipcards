@@ -5,6 +5,15 @@ window.onload = function() {
 
 	// cargar datos del localstorage
 	let data = localStorage.getItem(localstoragename);
+
+	// funciones 
+	const shuffle = function(a) {
+		for (let i = a.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[a[i], a[j]] = [a[j], a[i]];
+		}
+		return a;
+	}
 	
 	if(data == null) {
 		data = [];
@@ -23,7 +32,7 @@ window.onload = function() {
 		sincartas.appendChild(ainicio);
 		container.appendChild(sincartas);
 	} else {
-		data = JSON.parse(data);
+		data = shuffle(JSON.parse(data));
 
 		for(let i=0; i<data.length; i++) {
 			const divtarjeta = document.createElement('div');
@@ -48,5 +57,4 @@ window.onload = function() {
 			container.appendChild(divtarjeta);
 		}
 	}
-	console.log(data);
 };
