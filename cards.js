@@ -39,6 +39,7 @@ window.onload = function() {
 			const divcontenidotarjeta = document.createElement('div');
 			const divfront = document.createElement('div');
 			const divback = document.createElement('div');
+			const image = document.createElement('img');
 
 			divtarjeta.className = 'tarjeta';
 			divcontenidotarjeta.className = 'contenido-tarjeta';
@@ -46,7 +47,10 @@ window.onload = function() {
 			divback.className = 'back';
 
 			divfront.textContent = i+1;
-			divback.textContent = data[i];
+			image.src = 'images/albert-einstein.jpg';
+			divback.appendChild(image);
+			// divback.textContent = data[i];
+
 
 			divcontenidotarjeta.appendChild(divfront);
 			divcontenidotarjeta.appendChild(divback);

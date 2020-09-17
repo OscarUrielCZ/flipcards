@@ -9,12 +9,21 @@
 <body>
 	<div class="container">
 		<div id="panel">
-			<div id="frases"></div>
+			<div id="preguntas"></div>
 			<div id="formulario">
-				<input type="text" placeholder="Nueva frase..." id="txtfrase">
-				<input type="button" value="Agregar" id="btnagregar">
+				<div class="seccion-form">
+					<label for="pregunta">Pregunta</label>
+					<input name="pregunta" type="text" placeholder="Escribe una pregunta o agrega una imagen" id="txt-pregunta" />
+					<input type="file" accept="image/*" id="img-pregunta" />
+				</div>
+				<div class="seccion-form">
+					<label for="respuesta">Respuesta</label>
+					<input name="respuesta" type="text" placeholder="Escribe la respuesta o agrega una imagen" id="txt-respuesta" />
+					<input type="file" accept="image/*" id="img-respuesta" />
+				</div>
+				<input type="button" value="Agregar" id="btn-agregar">
 			</div>
-			<a href="cards.html"><input type="button" id="btniniciar" value="Iniciar"></a>
+			<a href="cards.html"><input type="button" id="btn-iniciar" value="Iniciar juego"></a>
 		</div>
 	</div>
 	<script src="index.js"></script>
