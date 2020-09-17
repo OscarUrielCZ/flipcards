@@ -2,8 +2,8 @@ window.onload = function() {
 	// cargar datos y elementos
 	const localstoragename = 'flipcards123';
 	const btnagregar = document.getElementById('btn-agregar');
-	const frases = document.getElementById('preguntas');
 	const colores = ['#f2f2f2', '#e0e0e0'];
+	const frases = document.getElementById('preguntas');
 
 
 	// cargar datos del localstorage
@@ -11,19 +11,27 @@ window.onload = function() {
 	if(data != null) {
 		data = JSON.parse(data);
 		// imprimir datos en el DOM
-		data.map((frase, index) => {
+		console.log(data);
+		data.map((objeto, index) => {
 			const contenedor = document.createElement('div');
 			const texto = document.createElement('div');
 			const acciones = document.createElement('div');
+			const pregunta = document.createElement('span');
+			const respuesta = document.createElement('span');
 			const borrar = document.createElement('span');
 
 			contenedor.className = 'frase';
 			texto.className = 'texto';
+			pregunta.className = 'pregunta';
+			respuesta.className = 'respuesta';
 			acciones.className = 'acciones';
-			texto.innerHTML = frase;
+			pregunta.innerHTML = (objeto.pregunta.esimagen ? 'imagen: ': '') + objeto.pregunta.contenido;
+			respuesta.innerHTML = (objeto.respuesta.esimagen ? 'imagen: ': '') + objeto.respuesta.contenido;
 			borrar.innerHTML = 'borrar';
 			contenedor.style.background = colores[index%2];
 
+			texto.appendChild(pregunta);
+			texto.appendChild(respuesta);
 			acciones.appendChild(borrar);
 			contenedor.appendChild(texto);
 			contenedor.appendChild(acciones);
@@ -43,26 +51,29 @@ window.onload = function() {
 
 	// agregar eventos
 	btnagregar.addEventListener('click', function() {
-		const txtpregunta = document.getElementById('txt-pregunta').value.trim();
-		const imgpregunta = document.getElementById('img-pregunta').value; 
-		const txtrespuesta = document.getElementById('txt-respuesta').value.trim();
-		const imgrespuesta = document.getElementById('img-respuesta').value; 
+		const txtpregunta = document.getElementById('txt-pregunta');
+		const imgpregunta = document.getElementById('img-pregunta');
+		const txtrespuesta = document.getElementById('txt-respuesta');
+		const imgrespuesta = document.getElementById('img-respuesta');
 
-		if((txtpregunta || imgpregunta) && (txtrespuesta || imgrespuesta)) {
+		if((txtpregunta.value.trim() || imgpregunta.value) && (txtrespuesta.value.trim() || imgrespuesta.value)) {
 			const pregunta = {
 				pregunta: {
-					contenido: txtpregunta ? txtpregunta : getfilename(imgpregunta),
-					esimagen: txtpregunta == ""
+					contenido: txtpregunta.value.trim() ? txtpregunta.value.trim() : getfilename(imgpregunta.value),
+					esimagen: txtpregunta.value.trim() == ""
 				},
 				respuesta: {
-					contenedor: txtrespuesta ? txtrespuesta : getfilename(imgrespuesta),
-					esimagen: txtrespuesta == ""
+					contenido: txtrespuesta.value.trim() ? txtrespuesta.value.trim() : getfilename(imgrespuesta.value),
+					esimagen: txtrespuesta.value.trim() == ""
 				}
 			};
 
 			const actualizado = [...data, pregunta];
 			localStorage.setItem(localstoragename, JSON.stringify(actualizado));
 			txtpregunta.value = '';
+			txtrespuesta.value = '';
+			imgpregunta.value = '';
+			imgrespuesta.value = '';
 			location.reload();
 		}
 	});

@@ -47,10 +47,12 @@ window.onload = function() {
 			divback.className = 'back';
 
 			divfront.textContent = i+1;
-			image.src = 'images/albert-einstein.jpg';
-			divback.appendChild(image);
-			// divback.textContent = data[i];
-
+			if(data[i].pregunta.esimagen) {
+				image.src = 'images/'+data[i].pregunta.contenido;
+				divback.appendChild(image);
+			} else {
+				divback.textContent = data[i].pregunta.contenido;
+			}
 
 			divcontenidotarjeta.appendChild(divfront);
 			divcontenidotarjeta.appendChild(divback);
