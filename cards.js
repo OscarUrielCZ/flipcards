@@ -39,7 +39,8 @@ window.onload = function() {
 			const divcontenidotarjeta = document.createElement('div');
 			const divfront = document.createElement('div');
 			const divback = document.createElement('div');
-			const image = document.createElement('img');
+			const pregunta = document.createElement('div');
+			const respuesta = document.createElement('div');
 
 			divtarjeta.className = 'tarjeta';
 			divcontenidotarjeta.className = 'contenido-tarjeta';
@@ -48,17 +49,37 @@ window.onload = function() {
 
 			divfront.textContent = i+1;
 			if(data[i].pregunta.esimagen) {
+				const image = document.createElement('img');
 				image.src = 'images/'+data[i].pregunta.contenido;
-				divback.appendChild(image);
+				pregunta.appendChild(image);
 			} else {
-				divback.textContent = data[i].pregunta.contenido;
+				pregunta.textContent = data[i].pregunta.contenido;
 			}
+			if(data[i].respuesta.esimagen) {
+				const image = document.createElement('img');
+				image.src = 'images/'+data[i].respuesta.contenido;
+				respuesta.appendChild(image);
+			} else {
+				respuesta.textContent = data[i].respuesta.contenido;
+			}
+			divback.appendChild(pregunta);
+			divback.appendChild(respuesta);
+			respuesta.style.display = 'none';
 
 			divcontenidotarjeta.appendChild(divfront);
 			divcontenidotarjeta.appendChild(divback);
 			divtarjeta.appendChild(divcontenidotarjeta);
 			divtarjeta.addEventListener('click', function() {
 				divtarjeta.classList.toggle('flip');
+			});
+			divback.addEventListener('dblclick', function() {
+				if(pregunta.style.display == 'none') {
+					respuesta.style.display = 'none';
+					pregunta.style.display = 'block';
+				} else {
+					pregunta.style.display = 'none';
+					respuesta.style.display = 'block';
+				}
 			});
 			container.appendChild(divtarjeta);
 		}
